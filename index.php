@@ -18,57 +18,29 @@
 <div id="navigation">
 
 
-<h1>Méthode 1</h1>
 <?php
 $nb_fichier = 0;
+$nomDossier = getcwd('.');
+
+echo getcwd()."\n".'<br/>';
 echo '<ul>';
 
-if ($dossier = opendir('.')) {
+if ($dossier = opendir('./Sources/php explorer')) {
     while (false !== ($fichier = readdir($dossier))) {
         ++$nb_fichier;
-        echo '<li><a href="./Test/'.$fichier.'">'.$fichier.'</a></li>';
+        echo '<li><a href="./Sources/php explorer/'.$fichier.'">'.$fichier.'</a></li>';
     }
     echo '</ul><br />';
-    echo 'Il y a <strong>'.$nb_fichier.'</strong> fichier(s) dans le dossier';
+    echo 'Il y a <strong>'.$nb_fichier.'</strong> fichier(s) dans le dossier.';
 
     closedir($dossier);
 } else {
     echo 'Le dossier n\' a pas pu être ouvert';
 }
-?>
-<h1>Méthode 2</h1>
-<?php
 
-
-function list_dir($name, $level = 0)
-{
-    if ($dir = opendir($name)) {
-        while ($file = readdir($dir)) {
-            for ($i = 1; $i <= (4 * $level); ++$i) {
-                echo '&nbsp;';
-            }
-            echo "$file<br>\n";
-            if (is_dir($file) && !in_array($file, array('.', '..'))) {
-                list_dir($file, $level + 1);
-            }
-        }
-        closedir($dir);
-    }
-}
-list_dir('.');
 ?>
 
-
-
-
-
-
-</div>
-
-
-
-
-
+<h1>Methode 2</h1>
 
     <script src="main.js"></script>
 </body>
