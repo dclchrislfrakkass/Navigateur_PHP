@@ -15,23 +15,56 @@
     </form>
     
 <div id="navigation">
+
 <?php
-function list_dir($name, $level = 0)
-{
-    if ($dir = opendir($name)) {
-        while ($file = readdir($dir)) {
-            for ($i = 1; $i <= (4 * $level); ++$i) {
-                echo '&nbsp;';
+
+$BASE = "./php explorer";
+
+// pour vérifier que le dossier existe
+	if($dossier = opendir($BASE))
+	{
+		// (false !==) permet de vérifier que la lecture n'a pas retournée d'erreur
+		while(false !== ($fichier = readdir($dossier)))
+		{ 
+      if($fichier != '.' && $fichier != '..')
+      {
+
+      echo '<li><a href="' . $BASE . '/' . $fichier . '">' . $fichier . '</a></li>';
+
+      $sousDossier = $BASE . '/' . $fichier;
+
+      // echo $sousDossier;
+
+      if (is_dir($sousDossier)) 
+      {
+
+        if ($dossier1 = opendir($sousDossier))
+        {
+          // (false !==) permet de vérifier que la lecture n'a pas retournée d'erreur
+          while(false !== ($fichier1 = readdir($dossier1)))
+          {
+            if($fichier1 != '.' && $fichier1 != '..'){
+      
+            echo '<li id="contenuSousDossier"><a href="./php explorer/' . $fichier1 . '">'. $fichier1 . '</a></li>';
             }
-            echo "$file<br>\n";
-            if (is_dir($file) && !in_array($file, array('.', '..'))) {
-                list_dir($file, $level + 1);
-            }
+          }
+          closedir($dossier1);
         }
-        closedir($dir);
+        else
+        {
+         echo 'Le dossier n\' a pas pu être ouvert';
+        }
+      }
     }
-}
-list_dir('.');
+		}
+		 
+		closedir($dossier);
+	}
+ 	else
+	{
+	 echo 'Le dossier n\' a pas pu être ouvert';
+	}
+?> 
 ?>
 
 
