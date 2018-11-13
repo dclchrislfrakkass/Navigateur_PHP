@@ -1,4 +1,13 @@
-.contenuSousDossier {
-    margin-right: 50px; 
+li{
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+    text-decoration-color: blue;
+}
+
+#contenuSousDossier {
+    margin-left: 50px; 
     color : green;   
 }
