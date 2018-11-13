@@ -10,12 +10,36 @@
 </head>
 
 <body>
-    <form class="recherche" type="text" value="faite votre recherche">
+    <form class="recherche" type="text">
         <input id="champ" type="text" value="rechercher"> 
     </form>
     
+
 <div id="navigation">
+
+
+<h1>Méthode 1</h1>
 <?php
+$nb_fichier = 0;
+echo '<ul>';
+
+if ($dossier = opendir('.')) {
+    while (false !== ($fichier = readdir($dossier))) {
+        ++$nb_fichier;
+        echo '<li><a href="./Test/'.$fichier.'">'.$fichier.'</a></li>';
+    }
+    echo '</ul><br />';
+    echo 'Il y a <strong>'.$nb_fichier.'</strong> fichier(s) dans le dossier';
+
+    closedir($dossier);
+} else {
+    echo 'Le dossier n\' a pas pu être ouvert';
+}
+?>
+<h1>Méthode 2</h1>
+<?php
+
+
 function list_dir($name, $level = 0)
 {
     if ($dir = opendir($name)) {
@@ -40,9 +64,6 @@ list_dir('.');
 
 
 </div>
-
-
-
 
 
 
