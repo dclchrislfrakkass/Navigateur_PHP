@@ -10,37 +10,77 @@
 </head>
 
 <body>
-    <form class="recherche" type="text">
+    <form class="recherche" type="text" value="faite votre recherche">
         <input id="champ" type="text" value="rechercher"> 
     </form>
     
-
 <div id="navigation">
 
-
 <?php
-$nb_fichier = 0;
-$nomDossier = getcwd('.');
 
-echo getcwd()."\n".'<br/>';
-echo '<ul>';
+$BASE = "./php explorer";
 
-if ($dossier = opendir('./Sources/php explorer')) {
-    while (false !== ($fichier = readdir($dossier))) {
-        ++$nb_fichier;
-        echo '<li><a href="./Sources/php explorer/'.$fichier.'">'.$fichier.'</a></li>';
+// pour vérifier que le dossier existe
+	if($dossier = opendir($BASE))
+	{
+		// (false !==) permet de vérifier que la lecture n'a pas retournée d'erreur
+		while(false !== ($fichier = readdir($dossier)))
+		{ 
+      if($fichier != '.' && $fichier != '..')
+      {
+
+      echo '<li><a href="' . $BASE . '/' . $fichier . '">' . $fichier . '</a></li>';
+
+      $sousDossier = $BASE . '/' . $fichier;
+
+      // echo $sousDossier;
+
+      if (is_dir($sousDossier)) 
+      {
+
+        if ($dossier1 = opendir($sousDossier))
+        {
+          // (false !==) permet de vérifier que la lecture n'a pas retournée d'erreur
+          while(false !== ($fichier1 = readdir($dossier1)))
+          {
+            if($fichier1 != '.' && $fichier1 != '..'){
+      
+            echo '<li id="contenuSousDossier"><a href="./php explorer/' . $fichier1 . '">'. $fichier1 . '</a></li>';
+            }
+          }
+          closedir($dossier1);
+        }
+        else
+        {
+         echo 'Le dossier n\' a pas pu être ouvert';
+        }
+      }
     }
-    echo '</ul><br />';
-    echo 'Il y a <strong>'.$nb_fichier.'</strong> fichier(s) dans le dossier.';
-
-    closedir($dossier);
-} else {
-    echo 'Le dossier n\' a pas pu être ouvert';
-}
-
+		}
+		 
+		closedir($dossier);
+	}
+ 	else
+	{
+	 echo 'Le dossier n\' a pas pu être ouvert';
+	}
+?> 
 ?>
 
-<h1>Methode 2</h1>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
 
     <script src="main.js"></script>
 </body>

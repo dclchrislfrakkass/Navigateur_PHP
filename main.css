@@ -1,7 +1,4 @@
-ul {
-    list-style: none;
-}
-li {
-
-    list-style: none;
+.contenuSousDossier {
+    margin-right: 50px; 
+    color : green;   
 }
