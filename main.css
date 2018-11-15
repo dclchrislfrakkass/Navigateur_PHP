@@ -1,45 +1,46 @@
 @media only screen and (max-width: 500px){
-li{
-    list-style-type: none;
-    font-size: 2em;
-}
-body {
-    background: #1C6EA4;
-    background: -moz-linear-gradient(top, #1C6EA4 0%, #2388CB 64%, #144E75 100%);
-    background: -webkit-linear-gradient(top, #1C6EA4 0%, #2388CB 64%, #144E75 100%);
-    background: linear-gradient(to bottom, #1C6EA4 0%, #2388CB 64%, #144E75 100%);
-}
-a{
-    text-decoration: none;
-    text-decoration-color: blue;
-}
-#champ {
-    width: 100%;
-    border-radius: 8px;
-   /* position: absolute;
-    z-index: -1;*/
-} 
-#navigation {
-    background-color: white;
-    max-width: 100%;
-    border-radius: 8px;
-}
-#contenuSousDossier {
-    margin-left: 50px; 
-    color : green;   
-}
-
-#button{
-    background-color: blue;
-    color: white; 
-    width: 10vmax;
-    font-size: 1.5vmax;
-    text-align: center;
-    border-radius: 18px;
-    height: 3vmax;
-}
-#REP {
-    border: 1px solid grey;
-    width: 100%;
-}
+    li{
+        list-style-type: none;
+        font-size: 2em;
+    }
+    body {
+        background: #1C6EA4;
+        background: -moz-linear-gradient(top, #1C6EA4 0%, #2388CB 64%, #144E75 100%);
+        background: -webkit-linear-gradient(top, #1C6EA4 0%, #2388CB 64%, #144E75 100%);
+        background: linear-gradient(to bottom, #1C6EA4 0%, #2388CB 64%, #144E75 100%);
+    }
+    a{
+        text-decoration: none;
+        text-decoration-color: blue;
+    }
+    #champ {
+        width: 100%;
+        border-radius: 8px;
+        /* position: absolute;
+        z-index: -1;*/
+    } 
+    #navigation {
+        background-color: white;
+        max-width: 100%;
+        border-radius: 8px;
+    }
+    #contenuSousDossier {
+        margin-left: 50px; 
+        color : green;   
+    }
+    
+    #bouton{
+        margin-left: 2vmax;
+        background-color: blue;
+        color: white; 
+        width: 10vmax;
+        font-size: 1.5vmax;
+        text-align: center;
+        border-radius: 18px;
+        height: 3vmax;
+    }
+    #REP {
+        border: 1px solid grey;
+        width: 100%;
+    }
 }
