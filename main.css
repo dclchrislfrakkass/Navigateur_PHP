@@ -1,3 +1,4 @@
+@media only screen and (max-width: 500px){
 li{
     list-style-type: none;
     font-size: 2em;
@@ -12,9 +13,15 @@ a{
     text-decoration: none;
     text-decoration-color: blue;
 }
+#champ {
+    width: 100%;
+    border-radius: 8px;
+   /* position: absolute;
+    z-index: -1;*/
+} 
 #navigation {
     background-color: white;
-    max-width: 50%;
+    max-width: 100%;
     border-radius: 8px;
 }
 #contenuSousDossier {
@@ -22,10 +29,17 @@ a{
     color : green;   
 }
 
-#bouton{
-    height: 1.2rem;
+#button{
+    background-color: blue;
+    color: white; 
+    width: 10vmax;
+    font-size: 1.5vmax;
+    text-align: center;
+    border-radius: 18px;
+    height: 3vmax;
 }
 #REP {
     border: 1px solid grey;
     width: 100%;
+}
 }

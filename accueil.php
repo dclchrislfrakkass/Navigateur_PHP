@@ -52,13 +52,14 @@ function scan($dir)
     //Parcours du tableau et affiche des <li>
     for ($i = 0; $i <= $nbLigne; ++$i) {
         if ($tableau[$i]['type'] == 'file') {
-            echo '<li>'.$tableau[$i]['name'].'<input id="bouton" type="button" value="Télécharger"/></li>';
+            echo '<li>'.$tableau[$i]['name'].'<input id="button" type="button" value="Télécharger"/></li>';
         } else {
             echo '<li><a href="'.$tableau[$i]['path'].'">'.$tableau[$i]['name'].'</a></li>';
         }
     }
 
     echo '<br/><div id="REP"> Répertoire en cours : '.$dir.'</div>';
+
     //Affichage d'un sous répertoire
 }
 
