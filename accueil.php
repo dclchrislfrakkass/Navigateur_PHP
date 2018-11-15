@@ -17,9 +17,9 @@ function scan($dir){
 	// recherche des fichiers ou des folders
 
 	if(file_exists($dir)){
-	
+
 		foreach(scandir($dir) as $f) {
-		
+	
 			if(!$f || $f[0] == '.') {
 				continue; // Ignore hidden files
 			}
@@ -53,16 +53,20 @@ function scan($dir){
 		}
 	}
 
-
-
-
 	$nbLigne=count($tableau);
 	//Parcours du tableau et affiche des <li>
 	for ($i = 0; $i <= $nbLigne; $i++)
 	{
 		if ($tableau[$i]['type']=="file")
 		{
-	  	echo '<li>'.$tableau[$i]['name'].'<input id="bouton" type="button" value="Télécharger"/></li>'; 
+		$extension = pathinfo($tableau[$i]['name'], PATHINFO_EXTENSION);
+
+		if ($extension == 'svg' || $extension == 'jpg') 
+			{
+			echo '<li>'. $tableau[$i]['name'] . '<a href="" id ="bouton" download='.$tableau[$i]['name'].'>Télécharger</a></li>'; 
+			} else {
+	  		echo '<li>'.$tableau[$i]['name'].'<input id="bouton" type="button" value="Télécharger"/></li>'; 
+			}
 		}
 		else if ($tableau[$i]['type']=="folder") {
 		  	echo '<li><a href="' . $tableau[$i]['path'] . '">' . $tableau[$i]['name'] . '</a></li>'; 
@@ -73,7 +77,13 @@ function scan($dir){
 			{
 				if ($NomSousTab[$j]['type']=="file")
 				{
-				  echo '<li id="sousDossier" >'.$NomSousTab[$j]['name'].'<input id="bouton" type="button" value="Télécharger"/></li>'; 
+					$extension = pathinfo($NomSousTab[$j]['name'], PATHINFO_EXTENSION);
+					if ($extension == 'svg' || $extension == 'jpg') 
+						{
+						echo '<li id="sousDossier">'. $NomSousTab[$j]['name'] . '<a href="" id ="bouton" download='.$NomSousTab[$j]['name'].'>Télécharger</a></li>'; 
+						} else {
+						  echo '<li is="sousDossier">'.$NomSousTab[$j]['name'].'<input id="bouton" type="button" value="Télécharger"/></li>'; 
+						}
 				}
 				else {
 				  echo '<li id="sousDossier" ><a href="' . $NomSousTab[$j]['path'] . '">' . $NomSousTab[$j]['name'] . '</a></li>'; 

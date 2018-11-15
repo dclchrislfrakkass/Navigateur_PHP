@@ -19,11 +19,11 @@
 
 </div>
 
-<script>
+<!-- <script>
     function reloadNavigation() {
     setInterval(function(){  $("#navigation").load('accueil.php'); }, 4000);
 }
-</script>
+</script> -->
 
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js">
