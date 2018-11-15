@@ -3,42 +3,83 @@
 
 <?php
 
-$BASE = "./php explorer";
+// $dir = répertoire à scanner
+$dir = "./php explorer";
 
-// pour vérifier que le dossier existe
-	if($dossier = opendir($BASE))
+// Run the recursive function 
+$response = scan($dir);
+
+
+// This function scans the files folder recursively, and builds a large array
+
+function scan($dir){
+
+  // variable qui va recuperer le tableau
+
+	$tableau = array();
+
+	// recherche des fichiers ou des folders
+
+	if(file_exists($dir)){
+	
+		foreach(scandir($dir) as $f) {
+		
+			if(!$f || $f[0] == '.') {
+				continue; // Ignore hidden files
+			}
+
+			if(is_dir($dir . '/' . $f)) {
+
+				// The path is a folder
+
+				$tableau[] = array(
+					'name' => $f,
+					'type' => "folder",
+					'path' => $dir . '/' . $f,
+          			//'items' => scan('path'. '/'), 
+          			'status' => "0", // indique que répertoire et que fermé
+				);
+
+				
+
+			}
+			
+			else {
+
+				// It is a file
+
+				$tableau[] = array(
+					'name' => $f,
+					'type' => "file",
+					'path' => $dir . '/' . $f,
+					// "size" => filesize($dir . '/' . $f) // Gets the size of this file
+        );
+      }
+		}
+	}
+
+
+
+$nbLigne=count($tableau);
+//Parcours du tableau et affiche des <li>
+for ($i = 0; $i <= $nbLigne; $i++)
+{
+	if ($tableau[$i]['type']=="file")
 	{
-		// (false !==) permet de vérifier que la lecture n'a pas retournée d'erreur
-		while(false !== ($fichier = readdir($dossier)))
-		{ 
-      // Pour eliminer les dossiers racine . et ..
-      if($fichier != '.' && $fichier != '..')
-      {
+	  echo '<li>'.$tableau[$i]['name'].'<input id="bouton" type="button" value="Télécharger"/></li>'; 
+	}
+	else {
+	  echo '<li><a href="' . $tableau[$i]['path'] . '">' . $tableau[$i]['name'] . '</a></li>'; 
+	}
+}
 
-      echo '<li><a href="' . $BASE . '/' . $fichier . '">' . $fichier . '</a></li>';
+//Affichage d'un sous répertoire
 
-      $sousDossier = $BASE . '/' . $fichier;
 
-        if ($dossier1 = opendir($sousDossier))
-        {
-        // (false !==) permet de vérifier que la lecture n'a pas retournée d'erreur
-          while(false !== ($fichier1 = readdir($dossier1)))
-          {
-            if($fichier1 != '.' && $fichier1 != '..')
-            {
-        
-            $nouveauChemin = $BASE . '/' . $fichier . '/' . $fichier1;
-  
-            echo '<li id="contenuSousDossier"><a href="' . $nouveauChemin . '">'. $fichier1 . '</a></li>';
-            }
-          }
-          closedir($dossier1);
-        }
+}
 
-    }
-	}	 
-	closedir($dossier);
-  }
+
+
+
 
 ?> 
-
