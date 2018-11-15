@@ -43,4 +43,8 @@
         border: 1px solid grey;
         width: 100%;
     }
+    #sousDossier
+    {
+        margin-left: 50px;
+    }
 }

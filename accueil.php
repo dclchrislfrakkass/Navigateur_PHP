@@ -34,10 +34,8 @@ function scan($dir){
 					'path' => $dir . '/' . $f,
           			'status' => "0", // indique que répertoire et que fermé
 				);
-
 				$x=count($tableau);
-				$x--;
-			
+				$x--;			
 				$NomSousTab = scanSousRep($tableau[$x]['path'], $tableau[$x]['name']);
 			}
 			
@@ -66,23 +64,21 @@ function scan($dir){
 		{
 	  	echo '<li>'.$tableau[$i]['name'].'<input id="bouton" type="button" value="Télécharger"/></li>'; 
 		}
-		else {
-		  echo '<li><a href="' . $tableau[$i]['path'] . '">' . $tableau[$i]['name'] . '</a></li>'; 
-		  // on passe sur le tableau du sous dossier
-		  	$nbLigne1 = count($NomSousTab);
-		  	echo $nbLigne1;
-		  	//Parcours du tableau et affiche des <li>
-		  	for ($j = 0; $j <= $nbLigne1; $j++)
-		  	{
-			  if ($NomSousTab[$j]['type']=="file")
-			  {
-				echo '<li>'.$NomSousTab[$j]['name'].'<input id="bouton" type="button" value="Télécharger"/></li>'; 
-			  }
-			  else {
-				echo '<li><a href="' . $NomSousTab[$j]['path'] . '">' . $NomSousTab[$j]['name'] . '</a></li>'; 
-	  
-			  }
-		  }
+		else if ($tableau[$i]['type']=="folder") {
+		  	echo '<li><a href="' . $tableau[$i]['path'] . '">' . $tableau[$i]['name'] . '</a></li>'; 
+			// on passe à l'affichage sur le tableau du sous dossier
+			$nbLigne1=count($NomSousTab);
+			//Parcours du tableau et affiche des <li>
+			for ($j = 0; $j <= ($nbLigne1-1); $j++)
+			{
+				if ($NomSousTab[$j]['type']=="file")
+				{
+				  echo '<li id="sousDossier" >'.$NomSousTab[$j]['name'].'<input id="bouton" type="button" value="Télécharger"/></li>'; 
+				}
+				else {
+				  echo '<li id="sousDossier" ><a href="' . $NomSousTab[$j]['path'] . '">' . $NomSousTab[$j]['name'] . '</a></li>'; 
+				}
+			}
 
 		}
 	}
