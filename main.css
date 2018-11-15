@@ -2,12 +2,21 @@ li{
     list-style-type: none;
     font-size: 2em;
 }
-
+body {
+    background: #1C6EA4;
+    background: -moz-linear-gradient(top, #1C6EA4 0%, #2388CB 64%, #144E75 100%);
+    background: -webkit-linear-gradient(top, #1C6EA4 0%, #2388CB 64%, #144E75 100%);
+    background: linear-gradient(to bottom, #1C6EA4 0%, #2388CB 64%, #144E75 100%);
+}
 a{
     text-decoration: none;
     text-decoration-color: blue;
 }
-
+#navigation {
+    background-color: white;
+    max-width: 50%;
+    border-radius: 8px;
+}
 #contenuSousDossier {
     margin-left: 50px; 
     color : green;   
@@ -16,4 +25,7 @@ a{
 #bouton{
     height: 1.2rem;
 }
-
+#REP {
+    border: 1px solid grey;
+    width: 100%;
+}
